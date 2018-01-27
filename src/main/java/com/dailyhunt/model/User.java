@@ -11,10 +11,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	private String clientId;
 
 	private String name;
+	
+	private String city;
+	
+	private String state;
+	
+	private String fileName;
+	
+	private String tags;
 
-	private String clientId;
 
 	public Integer getId() {
 		return id;
@@ -38,6 +47,38 @@ public class User {
 
 	public void setClientId(String clientId) {
 		this.clientId = clientId;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
 	}
 
 }

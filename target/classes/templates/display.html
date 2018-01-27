@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+	<div>
+		<div th:each="user : ${users}">
+			<span th:text="${user.id}"></span> <span th:text="${user.name}"></span>
+			<span th:text="${user.clientId}"></span> <span th:text="${user.city}"></span>
+			<span th:text="${user.state}"></span> <span
+				th:text="${user.fileName}"></span> <img th:alt="${user.fileName}"
+				th:src="'/files/' + ${user.fileName}" />
+		</div>
+	</div>
+
+</body>
+</html>

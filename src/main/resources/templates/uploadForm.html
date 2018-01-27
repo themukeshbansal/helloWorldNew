@@ -13,11 +13,21 @@
 			</table>
 		</form>
 	</div>
-
+	
 	<div>
+		<div th:each="user : ${users}">
+		<span th:text="${user.id}"></span>
+		<span th:text="${user.name}"></span>
+		<span th:text="${user.clientId}"></span>
+		<span th:text="${user.city}"></span>
+		<span th:text="${user.state}"></span>
+		<span th:text="${user.fileName}"></span>
+		<img th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
+		</div>
 		<ul>
 			<li th:each="file : ${files}">
 				<a th:href="${file}" th:text="${file}" />
+				<!-- <img th:alt="${file}" th:src="${file}" /> -->
 			</li>
 		</ul>
 	</div>

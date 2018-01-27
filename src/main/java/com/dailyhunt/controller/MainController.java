@@ -6,8 +6,9 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +25,12 @@ public class MainController {
 	private UserRepository userRepository;
 	private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+    
+    @GetMapping("/")
+    public String display(Model model) {
+    	model.addAttribute("users",userRepository.findAll());
+        return "display";
+    }
     
 	@GetMapping(path="/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewUser (@RequestParam String name
@@ -52,4 +59,11 @@ public class MainController {
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
     }
+    @PostMapping("/getName")//TODO response body change to json object for the api to work
+    public @ResponseBody Greeting getName(@RequestParam String name) {
+    	return new Greeting(counter.incrementAndGet(),
+                String.format(template, name));
+    }
+    
+    
 }
