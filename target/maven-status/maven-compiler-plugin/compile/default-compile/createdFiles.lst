@@ -1,6 +1,0 @@
-com/dailyhunt/Application.class
-com/dailyhunt/controller/GreetingController.class
-com/dailyhunt/controller/MainController.class
-com/dailyhunt/model/Greeting.class
-com/dailyhunt/repository/UserRepository.class
-com/dailyhunt/model/User.class
