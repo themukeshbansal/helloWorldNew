@@ -55,8 +55,11 @@ public class FileUploadController {
     @PostMapping("/")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) {
-
-        storageService.store(file);
+    	
+    	//create a user entity and add the filename,id, name,clientId,city,state,date,Resolution 
+    	//to the entity and return a json response of success.
+        storageService.store(file); //if needed get the file name from here whichever you have stored
+       
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
