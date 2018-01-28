@@ -1,5 +1,7 @@
 package com.dailyhunt.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.dailyhunt.model.User;
@@ -8,5 +10,7 @@ import com.dailyhunt.model.User;
 // CRUD refers Create, Read, Update, Delete
 
 public interface UserRepository extends CrudRepository<User, Long> {
+	
+	List<User> findByName(String name);
 
 }

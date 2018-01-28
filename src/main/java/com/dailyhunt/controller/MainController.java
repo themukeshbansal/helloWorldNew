@@ -26,9 +26,11 @@ public class MainController {
 	private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
     
-    @GetMapping("/")
-    public String display(Model model) {
-    	model.addAttribute("users",userRepository.findAll());
+    @GetMapping("/")//TODO check expression to return all results if there is no default value present.
+    //Something like if empty find all otherwise find the one that is mentioned
+    public String display(@RequestParam(value="name", required=false, defaultValue="Amit Chaudhary") String name,Model model) {
+//    	model.addAttribute("users",userRepository.findAll());
+    	model.addAttribute("users",userRepository.findByName(name));
         return "display";
     }
     
