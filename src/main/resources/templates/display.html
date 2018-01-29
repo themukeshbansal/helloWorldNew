@@ -125,7 +125,7 @@
 						
 						<div class="col-md-3 form-group">
 							<input type="text" class="form-control input-lg"
-								placeholder="Tags" name="tags" id="tag" />			
+								placeholder="Comma Separated Tags" name="tags" id="tag" />			
 						</div>
 					
 						<div class="submit">
@@ -140,7 +140,7 @@
 			<div class="tz-gallery">
 				<div class="row">
 					<div class="col-sm-6 col-md-4" th:each="user : ${users}">
-						<a class="lightbox" th:href="${user.fileName}"> <img
+						<a class="lightbox" th:href="${user.fileName}"> <img class="img-fluid"
 							th:alt="${user.fileName}" th:src="${user.fileName}" />
 						</a>
 					</div>

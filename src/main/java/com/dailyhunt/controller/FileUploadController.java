@@ -37,7 +37,7 @@ public class FileUploadController {
         this.MC = MC;
     }
     @PostMapping("/upload")//TODO response body change to json object for the api to work
-    public @ResponseBody Greeting handleFileUpload(@RequestParam("file") MultipartFile file,
+    public String handleFileUpload(@RequestParam("file") MultipartFile file,
     		@RequestParam String name,
     		@RequestParam String clientId,
     		@RequestParam String city,
@@ -57,7 +57,7 @@ public class FileUploadController {
 		n.setState(state);
 		n.setTags(name+","+","+city+","+state+","+","+tags);
 		userRepository.save(n);
-		return new Greeting(200,"Success");
+		return "redirect:/display";
     }
     @GetMapping(path="/getAll")
     public @ResponseBody Iterable<User> display(@RequestParam(value="name", required=false, defaultValue="SHOWALL") String name,
