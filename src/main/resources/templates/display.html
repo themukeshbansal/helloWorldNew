@@ -12,12 +12,17 @@
 	rel="stylesheet" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" />
+
 <style type="text/css">
 body {
 	background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
 	min-height: 100vh;
 	font: normal 16px sans-serif;
 	padding: 60px 0;
+}
+
+.submit{
+	text-align: center;
 }
 
 .container.gallery-container {
@@ -81,28 +86,63 @@ body {
 <body>
 
 	<div class="container gallery-container">
-
+	
+	
 		<h1>Photo Fly</h1>
 
-		<p class="page-description text-center">A One Stop Collection of photos</p>
+		<p class="page-description text-center">A One Stop Collection of
+			photos</p>
+	
+		<div class="filtermenu">
+			<form method="get" action="/display">
+				
+				
+					<div class="col-md-3 form-group">
+						<input type="text" class="form-control"
+							placeholder="Name" name="name" id="name" value=""/>
+					</div>
 
-		<div class="tz-gallery">	
+					<div class="col-md-3 form-group">
+						<input type="text" class="form-control"
+							placeholder="State" name="state" id="state" value=""/>
+					</div>
+
+					<div class="col-md-3 form-group">
+						<input type="text" class="form-control"
+							placeholder="City" name="city" id="city" value="" />
+					</div>
+					
+					<div class="col-md-3 form-group">
+						<input type="text" class="form-control"
+							placeholder="Tags" name="tag" id="tag" value=""/>			
+					</div>
+				
+					<div class="submit">
+						<input class="btn btn-primary" type="submit" data-inline="true" value="Filter" />
+					</div>
+				
+			</form>
+		</div>
+
+		
+
+		<div class="tz-gallery">
 			<div class="row">
 				<div class="col-sm-6 col-md-4" th:each="user : ${users}">
-					<a class="lightbox" th:href="${user.fileName}"> 
-						<img th:alt="${user.fileName}" th:src="${user.fileName}" />
+					<a class="lightbox" th:href="'/files/' + ${user.fileName}"> <img
+						th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
 					</a>
 				</div>
 			</div>
-
 		</div>
 
 	</div>
 
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js">
+	</script>
 	<script>
-    baguetteBox.run('.tz-gallery');
-</script>
+		baguetteBox.run('.tz-gallery');
+	</script>
 </body>
 </html>
