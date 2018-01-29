@@ -89,8 +89,8 @@ body {
 		<div class="tz-gallery">	
 			<div class="row">
 				<div class="col-sm-6 col-md-4" th:each="user : ${users}">
-					<a class="lightbox" th:href="'/files/' + ${user.fileName}"> 
-						<img th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
+					<a class="lightbox" th:href="${user.fileName}"> 
+						<img th:alt="${user.fileName}" th:src="${user.fileName}" />
 					</a>
 				</div>
 			</div>

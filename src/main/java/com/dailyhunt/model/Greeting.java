@@ -1,16 +1,16 @@
 package com.dailyhunt.model;
 
 public class Greeting {
-	 private final long id;
+	 private final long Status;
 	    private final String content;
 
-	    public Greeting(long id, String content) {
-	        this.id = id;
+	    public Greeting(long Status, String content) {
+	        this.Status = Status;
 	        this.content = content;
 	    }
 
-	    public long getId() {
-	        return id;
+	    public long getStatus() {
+	        return Status;
 	    }
 
 	    public String getContent() {
