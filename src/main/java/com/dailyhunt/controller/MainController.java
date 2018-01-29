@@ -28,9 +28,18 @@ public class MainController {
     
     @GetMapping("/")//TODO check expression to return all results if there is no default value present.
     //Something like if empty find all otherwise find the one that is mentioned
-    public String display(@RequestParam(value="name", required=false, defaultValue="Amit Chaudhary") String name,Model model) {
+    public String display(@RequestParam(value="name", required=false, defaultValue="SHOWALL") String name,
+    		@RequestParam(value="clientId", required=false, defaultValue="SHOWALL") String clientId,
+    		@RequestParam(value="city", required=false, defaultValue="SHOWALL") String city,
+    		@RequestParam(value="state", required=false, defaultValue="SHOWALL") String state,
+    		@RequestParam(value="tags", required=false, defaultValue="SHOWALL") String tags,
+    		Model model) {
 //    	model.addAttribute("users",userRepository.findAll());
-    	model.addAttribute("users",userRepository.findByName(name));
+    	if (name.equals("SHOWALL") && clientId.equals("SHOWALL") && city.equals("SHOWALL") && state.equals("SHOWALL") && tags.equals("SHOWALL")) {
+    		model.addAttribute("users",userRepository.findAll());
+		}
+    	else
+    		model.addAttribute("users",userRepository.findByClientIdOrNameOrCityOrStateOrTags(clientId,name,city,state,tags));
         return "display";
     }
     

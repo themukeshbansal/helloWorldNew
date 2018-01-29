@@ -24,12 +24,12 @@
 		<span th:text="${user.fileName}"></span>
 		<img th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
 		</div>
-		<ul>
+		<!-- <ul>
 			<li th:each="file : ${files}">
 				<a th:href="${file}" th:text="${file}" />
-				<!-- <img th:alt="${file}" th:src="${file}" /> -->
+				<img th:alt="${file}" th:src="${file}" />
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 
 </body>

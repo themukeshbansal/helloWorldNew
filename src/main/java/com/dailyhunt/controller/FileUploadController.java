@@ -41,10 +41,11 @@ public class FileUploadController {
     public String listUploadedFiles(Model model) throws IOException {
     	
     	model.addAttribute("users",userRepository.findAll());
-        model.addAttribute("files", storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
-                        "serveFile", path.getFileName().toString()).build().toString())
-                .collect(Collectors.toList()));
+    	
+//        model.addAttribute("files", storageService.loadAll().map(
+//                path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
+//                        "serveFile", path.getFileName().toString()).build().toString())
+//                .collect(Collectors.toList()));
 
         return "uploadForm";
     }
@@ -83,7 +84,7 @@ public class FileUploadController {
 		n.setName(name);
 		n.setClientId(clientId);
 		n.setCity(city);
-		n.setFileName(fileName);
+		n.setFileName(file.getOriginalFilename());
 		n.setState(state);
 		n.setTags(tags);
 		userRepository.save(n);

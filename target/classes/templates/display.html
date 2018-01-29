@@ -82,17 +82,15 @@ body {
 
 	<div class="container gallery-container">
 
-		<h1>Bootstrap 3 Gallery</h1>
+		<h1>Photo Fly</h1>
 
-		<p class="page-description text-center">Grid Layout With Zoom
-			Effect</p>
+		<p class="page-description text-center">A One Stop Collection of photos</p>
 
-		<div class="tz-gallery">
-
+		<div class="tz-gallery">	
 			<div class="row">
-				<div class="col-sm-6 col-md-4">
-					<a class="lightbox" href="/files/test.jpeg"> <img
-						src="/files/test.jpeg" alt="ShinChan" />
+				<div class="col-sm-6 col-md-4" th:each="user : ${users}">
+					<a class="lightbox" th:href="'/files/' + ${user.fileName}"> 
+						<img th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
 					</a>
 				</div>
 			</div>

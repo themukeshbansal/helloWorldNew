@@ -12,5 +12,12 @@ import com.dailyhunt.model.User;
 public interface UserRepository extends CrudRepository<User, Long> {
 	
 	List<User> findByName(String name);
+	List<User> findByClientIdOrNameOrCityOrStateOrTags(
+			String clientId,
+			String name,
+			String city,
+			String state,
+			String tags
+			);
 
 }
