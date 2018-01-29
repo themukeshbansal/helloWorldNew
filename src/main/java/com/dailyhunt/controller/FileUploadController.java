@@ -53,7 +53,7 @@ public class FileUploadController {
 		String path = "/api/files/" + file.getOriginalFilename(); 
 		n.setFileName(path);
 		n.setState(state);
-		n.setTags(name+","+","+city+","+state+","+","+tags);
+		n.setTags(name+","+city+","+state+","+tags);
 		userRepository.save(n);
 		return "redirect:/display";
     }
