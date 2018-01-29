@@ -1,148 +1,157 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<title>PhotoFly : One Stop Solution</title>
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
-	rel="stylesheet" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" />
-
-<style type="text/css">
-body {
-	background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
-	min-height: 100vh;
-	font: normal 16px sans-serif;
-	padding: 60px 0;
-}
-
-.submit{
-	text-align: center;
-}
-
-.container.gallery-container {
-	background-color: #fff;
-	color: #35373a;
-	min-height: 100vh;
-	border-radius: 20px;
-	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
-}
-
-.gallery-container h1 {
-	text-align: center;
-	margin-top: 70px;
-	font-family: 'Droid Sans', sans-serif;
-	font-weight: bold;
-}
-
-.gallery-container p.page-description {
-	text-align: center;
-	max-width: 800px;
-	margin: 25px auto;
-	color: #888;
-	font-size: 18px;
-}
-
-.tz-gallery {
-	padding: 40px;
-}
-
-.tz-gallery .lightbox img {
-	width: 100%;
-	margin-bottom: 30px;
-	transition: 0.2s ease-in-out;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-}
-
-.tz-gallery .lightbox img:hover {
-	transform: scale(1.05);
-	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.tz-gallery img {
-	border-radius: 4px;
-}
-
-.baguetteBox-button {
-	background-color: transparent !important;
-}
-
-@media ( max-width : 768px) {
-	body {
-		padding: 0;
-	}
-	.container.gallery-container {
-		border-radius: 0;
-	}
-}
-</style>
-
-</head>
-<body>
-
-	<div class="container gallery-container">
+	<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
+	<title> PhotoFly</title>
+	<link rel="icon" href="/api/files/PhotoFly.png" />
 	
-		<h1>Photo Fly</h1>
-
-		<p class="page-description text-center">A One Stop Collection of
-			photos</p>
-	
-		<div class="filtermenu">
-			<form method="get" action="/display">
-				
-				
-					<div class="col-md-3 form-group">
-						<input type="text" class="form-control"
-							placeholder="Name" name="name" id="name"/>
-					</div>
-
-					<div class="col-md-3 form-group">
-						<input type="text" class="form-control"
-							placeholder="State" name="state" id="state" />
-					</div>
-
-					<div class="col-md-3 form-group">
-						<input type="text" class="form-control"
-							placeholder="City" name="city" id="city" />
-					</div>
-					
-					<div class="col-md-3 form-group">
-						<input type="text" class="form-control"
-							placeholder="Tags" name="tags" id="tag" />			
-					</div>
-				
-					<div class="submit">
-						<input class="btn btn-primary" type="submit" data-inline="true" value="Filter" />
-					</div>
-				
-			</form>
-		</div>
-
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
+		rel="stylesheet" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" />
 		
-
-		<div class="tz-gallery">
-			<div class="row">
-				<div class="col-sm-6 col-md-4" th:each="user : ${users}">
-					<a class="lightbox" th:href="${user.fileName}"> <img
-						th:alt="${user.fileName}" th:src="${user.fileName}" />
-					</a>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<style type="text/css">
+	body {
+		background-image: linear-gradient(to bottom, #ecedee 0%, #2EA3D5 10%, #e7e8e9 100%);
+		min-height: 100vh;
+		font: normal 16px sans-serif;
+		padding: 60px 0;
+		text-align: center;
+	}
+	
+	.company{
+		width: 320px;
+		height: 60px;
+		margin-bottom: 30px;
+	}
+	
+	.submit{
+		text-align: center;
+	}
+	
+	.container.gallery-container {
+		background-image: linear-gradient(to top, #ecedee 0%, #2EA3D5 0%, #e7e8e9 100%);
+		min-height: 100vh;
+		border-radius: 20px;
+		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+		padding-top: 50px;
+	}
+	
+	.tz-gallery {
+		padding: 40px;
+	}
+	
+	.tz-gallery .lightbox img {
+		width: 100%;
+		margin-bottom: 30px;
+		transition: 0.2s ease-in-out;
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	}
+	
+	.tz-gallery .lightbox img:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+	}
+	
+	.tz-gallery img {
+		border-radius: 4px;
+	}
+	
+	.baguetteBox-button {
+		background-color: transparent !important;
+	}
+	
+	.custom{
+		width: 150px; !important
+	}
+	
+	@media ( max-width : 768px) {
+		body {
+			padding: 0;
+		}
+		.container.gallery-container {
+			border-radius: 0;
+		}
+	}
+	</style>
+	
+	</head>
+	<body>
+	
+		<div class="container gallery-container">
+		
+			<img class="company" alt="PhotoFly" src="/api/files/PhotoFlyText.png"/>			
+	
+			<div class="showFilter" style="text-align: center;">
+				<button class="btn-lg btn-primary filterBtn custom">Filter</button>
+				<a href="/addImage">
+					<button class="btn-lg btn-success uploadBtn custom">Upload</button>
+				</a>
+			</div>	
+		
+			<div class="filtermenu" style="display: none">
+				<form method="get" action="/display">
+					
+					
+						<div class="col-md-3 form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="Name" name="name" id="name"/>
+						</div>
+	
+						<div class="col-md-3 form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="State" name="state" id="state" />
+						</div>
+	
+						<div class="col-md-3 form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="City" name="city" id="city" />
+						</div>
+						
+						<div class="col-md-3 form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="Comma Separated Tags" name="tags" id="tag" />			
+						</div>
+					
+						<div class="submit">
+							<input class="btn-lg btn-primary custom" type="submit" data-inline="true" value="Filter" />
+						</div>
+					
+				</form>
+			</div>
+	
+			
+	
+			<div class="tz-gallery">
+				<div class="row">
+					<div class="col-sm-6 col-md-3" th:each="user : ${users}">
+						<a class="lightbox" th:href="${user.fileName}"> <img class="img-fluid"
+							th:alt="${user.fileName}" th:src="${user.fileName}" />
+						</a>
+					</div>
 				</div>
 			</div>
+	
 		</div>
-
-	</div>
-
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js">
-	</script>
-	<script>
-		baguetteBox.run('.tz-gallery');
-	</script>
-</body>
-</html>
+	
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js">
+		</script>
+		<script>
+			baguetteBox.run('.tz-gallery');
+		</script>
+		
+		<script	>
+			$(".filterBtn").click(function(){
+				$(".showFilter").hide();
+				$(".filterMenu").show();
+			});
+		</script>
+	</body>
+	</html>

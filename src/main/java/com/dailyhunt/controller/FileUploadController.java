@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.dailyhunt.model.Greeting;
 import com.dailyhunt.model.User;
 import com.dailyhunt.repository.UserRepository;
 import com.dailyhunt.storage.StorageFileNotFoundException;

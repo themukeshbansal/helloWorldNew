@@ -44,13 +44,11 @@ public class MainController {
 			searchTags.add(state);
 		if (!tags.equals("SHOWALL")) {
 			String[] temp = tags.split(",");
-			System.out.println(tags);
 			for (int i = 0; i < temp.length; i++) {
 				searchTags.add(temp[i]);
 			}
 		}
 		count = searchTags.size();
-		System.out.println(count);
 		Iterable <User> results = null;
 		switch (count) {
 		case 0:

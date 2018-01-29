@@ -1,36 +1,109 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<div th:if="${message}">
-		<h2 th:text="${message}"/>
-	</div>
+<title> PhotoFly: Upload</title>
+<link rel="icon" href="/api/files/PhotoFly.png" />
 
-	<div>
-		<form method="POST" enctype="multipart/form-data" action="/">
-			<table>
-				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-			</table>
-		</form>
-	</div>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" />
+
+<style type="text/css">
+body {
+		background-image: linear-gradient(to bottom, #ecedee 0%, #2EA3D5 10%, #e7e8e9 100%);
+		min-height: 100vh;
+		font: normal 16px sans-serif;
+		padding: 60px 0px;
+	}
 	
-	<div>
-		<div th:each="user : ${users}">
-		<span th:text="${user.id}"></span>
-		<span th:text="${user.name}"></span>
-		<span th:text="${user.clientId}"></span>
-		<span th:text="${user.city}"></span>
-		<span th:text="${user.state}"></span>
-		<span th:text="${user.fileName}"></span>
-		<img th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
-		</div>
-		<!-- <ul>
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
-				<img th:alt="${file}" th:src="${file}" />
-			</li>
-		</ul> -->
-	</div>
+.company{
+		width: 320px;
+		height: 60px;
+		margin-bottom: 30px;
+	}
 
+.container.gallery-container {
+	background-image: linear-gradient(to top, #ecedee 0%, #2EA3D5 0%, #e7e8e9 100%);
+	min-height: 100vh;
+	border-radius: 20px;
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+	text-align: center;
+	padding-top: 50px;
+}
+
+@media ( max-width : 768px) {
+	body {
+		padding: 0;
+	}
+	.container.gallery-container {
+		border-radius: 0;
+	}
+}
+</style>
+
+</head>
+<body>
+	<div class="container gallery-container">
+		
+		<img class="company" alt="PhotoFly" src="/api/files/PhotoFlyText.png"/>
+
+		<div class="uploadForm">
+			<form method="post" action="/api/upload" enctype="multipart/form-data">
+				<div class="input-group input-lg col-xs-4 col-xs-offset-4">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> <input id="name" type="text"
+						class="form-control input-lg" name="name" placeholder="Name" th:required="required"/>
+				</div>
+
+				<input type="hidden" name="clientId" value="fakeId" />
+
+				<div class="input-group input-lg col-xs-4 col-xs-offset-4">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-calendar"></i></span> <input id="city"
+						type="text" class="form-control input-lg" name="city"
+						placeholder="City" th:required="required"/>
+				</div>
+
+				<div class="input-group input-lg col-xs-4 col-xs-offset-4">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-screenshot"></i></span> <input id="state"
+						type="text" class="form-control input-lg" name="state"
+						placeholder="State" th:required="required"/>
+				</div>
+
+				<input type="hidden" name="fileName" value="fakeFileName" />
+
+				<div class="input-group input-lg col-xs-4 col-xs-offset-4">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-tags"></i></span> <input id="tags" type="text"
+						class="form-control input-lg" name="tags" placeholder="Tags" th:required="required"/>
+				</div>				
+				<div class="input-group input-lg col-xs-4 col-xs-offset-4">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-file"></i></span> <input id="tags" type="file"
+						class="form-control input-lg" name="file" placeholder="Choose to upload" th:required="required"/>
+				</div>
+
+				<div class="submit" style="text-align: center; padding-top: 20px">
+					<input class="btn-lg btn-primary" type="submit" data-inline="true"
+						value="Submit" />
+				</div>
+			</form>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js">
+			
+		</script>
+		<script>
+			baguetteBox.run('.tz-gallery');
+		</script>
+	</div>
 </body>
 </html>
