@@ -1,6 +1,8 @@
 package com.dailyhunt.controller;
 
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,15 +29,105 @@ public class MainController {
     	model.addAttribute("users",this.process(name,city,state,tags));
         return "display";
     }
-    
-    
+    @GetMapping("/addImage")
+    public String addImage() {
+        return "uploadForm";
+    }
 	public Iterable<User> process(String name,String city,String state,String tags) {
-		if (name.equals("SHOWALL") && city.equals("SHOWALL") && state.equals("SHOWALL") && tags.equals("SHOWALL")) {
-    		return userRepository.findAll();
+		int count = 0;
+		ArrayList<String> searchTags= new ArrayList<>();
+		if (!name.equals("SHOWALL"))
+			searchTags.add(name);
+		if (!city.equals("SHOWALL"))
+			searchTags.add(city);
+		if (!state.equals("SHOWALL"))
+			searchTags.add(state);
+		if (!tags.equals("SHOWALL")) {
+			String[] temp = tags.split(",");
+			System.out.println(tags);
+			for (int i = 0; i < temp.length; i++) {
+				searchTags.add(temp[i]);
+			}
 		}
-    	
-    	else
-    		return userRepository.findByNameOrCityOrStateOrTags(name,city,state,tags);
+		count = searchTags.size();
+		System.out.println(count);
+		Iterable <User> results = null;
+		switch (count) {
+		case 0:
+			results = userRepository.findAll();
+			break;
+		case 1:
+			results = userRepository.findByTagsContaining(
+					searchTags.get(0)
+					);
+			break;
+		case 2:
+			results = userRepository.findByTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1)
+					);
+			break;
+		case 3:
+			results = userRepository.findByTagsContainingAndTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1),
+					searchTags.get(2)
+					);
+			break;
+		case 4:
+			results = userRepository.findByTagsContainingAndTagsContainingAndTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1),
+					searchTags.get(2),
+					searchTags.get(3)
+					);
+			break;
+		case 5:
+			results = userRepository.findByTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1),
+					searchTags.get(2),
+					searchTags.get(3),
+					searchTags.get(4)
+					);
+			break;
+		case 6:
+			results = userRepository.findByTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1),
+					searchTags.get(2),
+					searchTags.get(3),
+					searchTags.get(4),
+					searchTags.get(5)
+					);
+			break;
+		case 7:
+			results = userRepository.findByTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1),
+					searchTags.get(2),
+					searchTags.get(3),
+					searchTags.get(4),
+					searchTags.get(5),
+					searchTags.get(6)
+					);
+			break;
+		case 8:
+			results = userRepository.findByTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContainingAndTagsContaining(
+					searchTags.get(0),
+					searchTags.get(1),
+					searchTags.get(2),
+					searchTags.get(3),
+					searchTags.get(4),
+					searchTags.get(5),
+					searchTags.get(6),
+					searchTags.get(7)
+					);
+			break;
+		default:
+			results = userRepository.findAll();
+			break;
+		}
+		return results;
 	}
-
 }

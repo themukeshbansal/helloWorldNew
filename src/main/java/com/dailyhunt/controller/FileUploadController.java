@@ -55,7 +55,7 @@ public class FileUploadController {
 		String path = "/api/files/" + file.getOriginalFilename(); 
 		n.setFileName(path);
 		n.setState(state);
-		n.setTags(tags);
+		n.setTags(name+","+","+city+","+state+","+","+tags);
 		userRepository.save(n);
 		return new Greeting(200,"Success");
     }

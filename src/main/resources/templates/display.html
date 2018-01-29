@@ -99,22 +99,22 @@ body {
 				
 					<div class="col-md-3 form-group">
 						<input type="text" class="form-control"
-							placeholder="Name" name="name" id="name" value=""/>
+							placeholder="Name" name="name" id="name"/>
 					</div>
 
 					<div class="col-md-3 form-group">
 						<input type="text" class="form-control"
-							placeholder="State" name="state" id="state" value=""/>
+							placeholder="State" name="state" id="state" />
 					</div>
 
 					<div class="col-md-3 form-group">
 						<input type="text" class="form-control"
-							placeholder="City" name="city" id="city" value="" />
+							placeholder="City" name="city" id="city" />
 					</div>
 					
 					<div class="col-md-3 form-group">
 						<input type="text" class="form-control"
-							placeholder="Tags" name="tag" id="tag" value=""/>			
+							placeholder="Tags" name="tags" id="tag" />			
 					</div>
 				
 					<div class="submit">
@@ -129,8 +129,8 @@ body {
 		<div class="tz-gallery">
 			<div class="row">
 				<div class="col-sm-6 col-md-4" th:each="user : ${users}">
-					<a class="lightbox" th:href="'/files/' + ${user.fileName}"> <img
-						th:alt="${user.fileName}" th:src="'/files/' + ${user.fileName}" />
+					<a class="lightbox" th:href="${user.fileName}"> <img
+						th:alt="${user.fileName}" th:src="${user.fileName}" />
 					</a>
 				</div>
 			</div>
