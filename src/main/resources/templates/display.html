@@ -4,7 +4,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
-	<title>PhotoFly : One Stop Solution</title>
+	<title> PhotoFly</title>
+	<link rel="icon" href="/api/files/PhotoFly.png" />
 	
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -17,10 +18,17 @@
 	
 	<style type="text/css">
 	body {
-		background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
+		background-image: linear-gradient(to bottom, #ecedee 0%, #2EA3D5 10%, #e7e8e9 100%);
 		min-height: 100vh;
 		font: normal 16px sans-serif;
 		padding: 60px 0;
+		text-align: center;
+	}
+	
+	.company{
+		width: 320px;
+		height: 60px;
+		margin-bottom: 30px;
 	}
 	
 	.submit{
@@ -28,25 +36,11 @@
 	}
 	
 	.container.gallery-container {
-		background-color: #fff;
-		color: #35373a;
+		background-image: linear-gradient(to top, #ecedee 0%, #2EA3D5 0%, #e7e8e9 100%);
 		min-height: 100vh;
 		border-radius: 20px;
 		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
-	}
-	
-	.gallery-container h1 {
-		text-align: center;
-		margin-top: 30px;
-		font-family: Verdana,sans-serif;
-		font-weight: bold;
-	}
-	
-	.gallery-container p.page-description {
-		text-align: center;
-		color: #888;
-		font-size: 18px;
-		margin-bottom: 30px;
+		padding-top: 50px;
 	}
 	
 	.tz-gallery {
@@ -92,11 +86,8 @@
 	
 		<div class="container gallery-container">
 		
-			<h1>Photo Fly</h1>			
+			<img class="company" alt="PhotoFly" src="/api/files/PhotoFlyText.png"/>			
 	
-			<p class="page-description text-center">A One Stop Collection of
-				photos</p>
-				
 			<div class="showFilter" style="text-align: center;">
 				<button class="btn-lg btn-primary filterBtn custom">Filter</button>
 				<a href="/addImage">
@@ -139,7 +130,7 @@
 	
 			<div class="tz-gallery">
 				<div class="row">
-					<div class="col-sm-6 col-md-4" th:each="user : ${users}">
+					<div class="col-sm-6 col-md-3" th:each="user : ${users}">
 						<a class="lightbox" th:href="${user.fileName}"> <img class="img-fluid"
 							th:alt="${user.fileName}" th:src="${user.fileName}" />
 						</a>
