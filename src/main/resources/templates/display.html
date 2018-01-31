@@ -31,12 +31,37 @@
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
 
+<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+
 <style type="text/css">
+body {
+	background:
+		url("https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-10-full.jpg");
+	background-size: cover;
+}
+
+.company {
+	width: 320px;
+	height: 60px;
+	margin-bottom: 30px;
+}
+
+.companylogo {
+	text-align: center;
+}
+
 .custom {
 	width: 120px;
 }
-.submit,.showFilter{
-	text-align: center;	
+
+.submit, .showFilter {
+	text-align: center;
+}
+
+.tags>a{
+	float: left;
+	margin-right: 7px;
 }
 </style>
 
@@ -49,16 +74,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<a class="navbar-brand" href="/display">PhotoFly</a>
-					
-					
+					<div class="companylogo">
+						<a href="/display"> <img class="company" alt="PhotoFly"
+							src="api/files/PhotoFlyText2.png" />
+						</a>
+					</div>
+
 					<div class="showFilter">
 						<button class="btn-lg btn-primary filterBtn custom">Filter</button>
 						<a href="/addImage">
 							<button class="btn-lg btn-success uploadBtn custom">Upload</button>
 						</a>
 					</div>
-					
+
 					<div class="filterMenu" style="display: none">
 						<form method="get" action="/display">
 
@@ -90,8 +118,8 @@
 
 						</form>
 					</div>
-					
-					
+
+
 				</div>
 			</div>
 		</div>
@@ -111,7 +139,28 @@
 						<div class="animate-box">
 							<a class="image-popup fh5co-board-img" th:href="${user.fileName}">
 								<img th:alt="${user.fileName}" th:src="${user.fileName}" />
-							</a> <span class="fh5co-desc" th:text="${user.tags}"></span>
+								
+							<div onclick="event.stopPropagation()" window.event.cancelBubble="true"
+								class="fh5co-desc tags" th:id="tags+${user.fileName}"> </div>
+							
+
+							<script th:inline="javascript">
+								var tag = [[${user.tags}]].split(",");
+								var i;
+								for(i=0;i<tag.length;i++){
+									if(tag[i].length<1)	continue;
+									
+									var div = document.getElementById("tags"+[[${user.fileName}]]);
+									var newlink = document.createElement("a");
+									newlink.setAttribute('href', '/display?tags='+tag[i]);
+									newlink.innerText = "#"+tag[i];
+									div.appendChild(newlink);
+								}
+								
+								
+								console.log(tag);
+								
+							</script>
 						</div>
 					</div>
 
@@ -124,8 +173,7 @@
 	</div>
 
 
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
@@ -138,13 +186,15 @@
 	<script src="js/salvattore.min.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
-	
+
 	<script>
 		$(".filterBtn").click(function() {
 			$(".showFilter").hide();
 			$(".filterMenu").show();
 		});
 	</script>
+
+
 
 </body>
 </html>
