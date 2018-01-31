@@ -1,0 +1,30 @@
+body {
+	background-image: linear-gradient(to bottom, #ecedee 0%, #2EA3D5 10%, #e7e8e9 100%);
+	min-height: 100vh;
+	font: normal 16px sans-serif;
+	padding: 60px 0px;
+}
+
+.company {
+	width: 320px;
+	height: 60px;
+	margin-bottom: 30px;
+}
+
+.container.gallery-container {
+	background-image: linear-gradient(to top, #ecedee 0%, #2EA3D5 0%, #e7e8e9 100%);
+	min-height: 100vh;
+	border-radius: 20px;
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
+	text-align: center;
+	padding-top: 50px;
+}
+
+@media ( max-width : 768px) {
+	body {
+		padding: 0;
+	}
+	.container.gallery-container {
+		border-radius: 0;
+	}
+}

@@ -30,7 +30,7 @@ import com.google.common.collect.ImmutableList;
 public class VisionController {
 	
   private static final String APPLICATION_NAME = "helloWorld=PhotoFly/1.0";
-  public static final String classPath = "/home/mukesh/Public/Eclipse_Projects/helloWorldNew/src/main/resources/static/";
+  public static final String classPath = "/home/saumil/eclipse-workspace/helloWorldNew/src/main/resources/static/";
   private static final int MAX_LABELS = 5;
   
   private static final String keyPath = classPath + "key.json";

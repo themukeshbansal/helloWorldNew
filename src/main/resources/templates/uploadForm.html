@@ -51,14 +51,15 @@ body {
 <body>
 	<div class="container gallery-container">
 
-		<a href="/display"> 
-			<img class="company" alt="PhotoFly" src="/api/files/PhotoFlyText.png" />
+		<a href="/display"> <img class="company" alt="PhotoFly"
+			src="/api/files/PhotoFlyText.png" />
 		</a>
 
 		<div class="uploadForm">
 			<form method="post" action="/api/upload"
 				enctype="multipart/form-data">
-				<div class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+				<div
+					class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-user"></i></span> <input id="name" type="text"
 						class="form-control input-lg" name="name" placeholder="Name"
@@ -67,14 +68,16 @@ body {
 
 				<input type="hidden" name="clientId" value="fakeId" />
 
-				<div class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+				<div
+					class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-calendar"></i></span> <input id="city"
 						type="text" class="form-control input-lg" name="city"
 						placeholder="City" th:required="required" />
 				</div>
 
-				<div class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+				<div
+					class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-screenshot"></i></span> <input id="state"
 						type="text" class="form-control input-lg" name="state"
@@ -83,13 +86,15 @@ body {
 
 				<input type="hidden" name="fileName" value="fakeFileName" />
 
-				<div class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+				<div
+					class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-tags"></i></span> <input id="tags" type="text"
 						class="form-control input-lg" name="tags" placeholder="Tags"
 						th:required="required" />
 				</div>
-				<div class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+				<div
+					class="input-group input-lg col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-file"></i></span> <input id="tags" type="file"
 						class="form-control input-lg" name="file"
