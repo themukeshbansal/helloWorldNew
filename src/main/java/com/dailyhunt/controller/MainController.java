@@ -33,6 +33,12 @@ public class MainController {
     public String addImage() {
         return "uploadForm";
     }
+    @GetMapping("/error")
+    public String getError() {
+        return "error";
+    }
+    
+    
 	public Iterable<User> process(String name,String city,String state,String tags) {
 		int count = 0;
 		ArrayList<String> searchTags= new ArrayList<>();

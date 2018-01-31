@@ -6,6 +6,7 @@ com/dailyhunt/model/Greeting.class
 com/dailyhunt/repository/UserRepository.class
 com/dailyhunt/model/User.class
 com/dailyhunt/storage/FileSystemStorageService.class
+com/dailyhunt/controller/VisionController.class
 com/dailyhunt/Application.class
 com/dailyhunt/storage/StorageFileNotFoundException.class
 com/dailyhunt/controller/FileUploadController.class

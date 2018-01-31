@@ -1,4 +1,7 @@
 package com.dailyhunt.controller;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -42,7 +45,7 @@ public class FileUploadController {
     		@RequestParam String state,
     		@RequestParam String fileName,
     		@RequestParam String tags,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) throws IOException, GeneralSecurityException {
     	//create a user entity and add the filename,id, name,clientId,city,state,date,Resolution 
     	//to the entity and return a json response of success.
         storageService.store(file); //if needed get the file name from here whichever you have stored
@@ -53,7 +56,8 @@ public class FileUploadController {
 		String path = "/api/files/" + file.getOriginalFilename(); 
 		n.setFileName(path);
 		n.setState(state);
-		n.setTags(name+","+city+","+state+","+tags);
+		String temp = VisionController.execute(file);
+		n.setTags(name+","+city+","+state+","+tags + temp);
 		userRepository.save(n);
 		return "redirect:/display";
     }
@@ -61,10 +65,16 @@ public class FileUploadController {
     public @ResponseBody Iterable<User> display(@RequestParam(value="name", required=false, defaultValue="SHOWALL") String name,
     		@RequestParam(value="city", required=false, defaultValue="SHOWALL") String city,
     		@RequestParam(value="state", required=false, defaultValue="SHOWALL") String state,
-    		@RequestParam(value="tags", required=false, defaultValue="SHOWALL") String tags,
-    		Model model) {
+    		@RequestParam(value="tags", required=false, defaultValue="SHOWALL") String tags) {
     	
     	return MC.process(name, city, state, tags);
+    }
+    
+    @PostMapping(path="/processImage")
+    public @ResponseBody String label(
+    		@RequestParam("file") MultipartFile file,
+    		Model model) throws IOException, GeneralSecurityException {
+        return VisionController.execute(file);
     }
 
     @GetMapping("/files/{filename:.+}")
