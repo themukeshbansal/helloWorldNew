@@ -32,19 +32,18 @@
 <script src="js/modernizr-2.6.2.min.js"></script>
 
 <!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 
 <style type="text/css">
 body {
 	background:
-		url("https://www.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-10-full.jpg");
+		url("http://harmattangh.com/wp-content/uploads/2016/06/white-background-image-6.png");
 	background-size: cover;
 }
 
 .company {
-	width: 320px;
-	height: 60px;
-	margin-bottom: 30px;
+	width: 500px;
+	height: 150px;
 }
 
 .companylogo {
@@ -59,9 +58,32 @@ body {
 	text-align: center;
 }
 
-.tags>a{
+.tags>a {
 	float: left;
 	margin-right: 7px;
+	color: black;
+	text-shadow: 1px 1px #cdcdcd;
+	font-size: 17px;
+	font-style: oblique;
+}
+
+.animate-box {
+	background: rgba(255, 255, 255, 0.69);
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.69) 10%,
+		rgba(255, 255, 255, 0.86) 60%, rgba(0, 181, 111, 1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(10%, rgba(255, 255,
+		255, 0.69)), color-stop(60%, rgba(255, 255, 255, 0.86)),
+		color-stop(100%, rgba(0, 181, 111, 1)));
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.69) 10%,
+		rgba(255, 255, 255, 0.86) 60%, rgba(0, 181, 111, 1) 100%);
+	background: -o-linear-gradient(top, rgba(255, 255, 255, 0.69) 10%,
+		rgba(255, 255, 255, 0.86) 60%, rgba(0, 181, 111, 1) 100%);
+	background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.69) 10%,
+		rgba(255, 255, 255, 0.86) 60%, rgba(0, 181, 111, 1) 100%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.69) 10%,
+		rgba(255, 255, 255, 0.86) 60%, rgba(0, 181, 111, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff',
+		endColorstr='#00b56f', GradientType=0);
 }
 </style>
 
@@ -70,13 +92,13 @@ body {
 <body>
 
 
-	<header id="fh5co-header" role="banner">
+	<header id="fh5co-header" role="banner" style="margin-top: -30px">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="companylogo">
 						<a href="/display"> <img class="company" alt="PhotoFly"
-							src="api/files/PhotoFlyText2.png" />
+							src="api/files/PhotoFlyText3.png" />
 						</a>
 					</div>
 
@@ -139,12 +161,11 @@ body {
 						<div class="animate-box">
 							<a class="image-popup fh5co-board-img" th:href="${user.fileName}">
 								<img th:alt="${user.fileName}" th:src="${user.fileName}" />
-								
-							<div onclick="event.stopPropagation()" window.event.cancelBubble="true"
-								class="fh5co-desc tags" th:id="tags+${user.fileName}"> </div>
-							
 
-							<script th:inline="javascript">
+								<div onclick="event.stopPropagation()"
+									window.event.cancelBubble="true" class="fh5co-desc tags"
+									th:id="tags+${user.fileName}"></div> <script
+									th:inline="javascript">
 								var tag = [[${user.tags}]].split(",");
 								var i;
 								for(i=0;i<tag.length;i++){
@@ -173,7 +194,7 @@ body {
 	</div>
 
 
-	
+
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
